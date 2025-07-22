@@ -45,6 +45,21 @@
       border-radius: 5px;
       border: none;
     }
+    .filter-buttons button {
+      background-color: #00ff99;
+      color: #000000;
+      border: none;
+      padding: 10px 16px;
+      margin: 6px 8px 16px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .filter-buttons button:hover {
+      background-color: #00cc7a;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -68,37 +83,48 @@
   <h2>ROMs em destaque</h2>
   <input type="text" id="searchBar" placeholder="Buscar ROM...">
 
-  <div class="rom-card">
+  <div class="filter-buttons">
+    <button onclick="filtrarVersao('todos')">Todos</button>
+    <button onclick="filtrarVersao('android10')">Android 10</button>
+    <button onclick="filtrarVersao('android11')">Android 11</button>
+    <button onclick="filtrarVersao('android12')">Android 12</button>
+    <button onclick="filtrarVersao('android13')">Android 13</button>
+    <button onclick="filtrarVersao('android14')">Android 14</button>
+    <button onclick="filtrarVersao('android15')">Android 15</button>
+    <button onclick="filtrarVersao('android16')">Android 16</button>
+  </div>
+
+  <div class="rom-card android15">
     <h3>LineageOS - Poco X7 Pro</h3>
     <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
     <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
 
-  <div class="rom-card">
+  <div class="rom-card android15">
     <h3>Evolution X</h3>
     <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
     <a href="https://evolution-x.org/" target="_blank">Baixar</a>
   </div>
 
-  <div class="rom-card">
-    <h3>PixelOS-Mi 8 lite (platina)</h3>
-    <p>Baseada no Android 14. Tem o visual do Google Pixel. leve,rápido e fluído.</p>
+  <div class="rom-card android14">
+    <h3>PixelOS - Mi 8 Lite (Platina)</h3>
+    <p>Baseada no Android 14. Tem o visual do Google Pixel. Leve, rápida e fluída.</p>
     <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
   </div>
 
-  <div class="rom-card">
+  <div class="rom-card android15">
     <h3>InfinityX - Edge 30 Neo (miami)</h3>
     <p>Baseada no Android 15. Tem funções indispensáveis para o dia a dia, é muito fluída, bonita e personalizável.</p>
     <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
   </div>
 
-  <div class="rom-card">
+  <div class="rom-card android15">
     <h3>Evolution X - Moto G7 Plus (Lake)</h3>
     <p>Baseada no Android 15. É confiável, simples, muito fluída e bonita.</p>
     <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
   </div>
 
-  <div class="rom-card">
+  <div class="rom-card android16">
     <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
     <p>A primeira ROM com Android 16. Traz melhorias no design, fluidez, animações e interface, além de mais estabilidade para o sistema.</p>
     <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
@@ -134,6 +160,17 @@
       }
     });
   });
+
+  function filtrarVersao(classe) {
+    const cards = document.querySelectorAll('.rom-card');
+    cards.forEach(card => {
+      if (classe === 'todos') {
+        card.style.display = '';
+      } else {
+        card.style.display = card.classList.contains(classe) ? '' : 'none';
+      }
+    });
+  }
 </script>
 
 </body>

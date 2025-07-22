@@ -37,6 +37,14 @@
       margin: 10px 0;
       border-radius: 8px;
     }
+    input#searchBar {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -55,48 +63,62 @@
   <h2>Bem-vindo ao Custom ROMs Home!</h2>
   <p>Encontre as melhores ROMs personalizadas para seu dispositivo Android.</p>
 </section>
+
 <section id="roms">
-<input type="text" id="searchBar" placeholder="Buscar ROM..." style="width: 100%; padding: 10px; font-size: 16px; margin: 10px 0; border-radius: 5px; border: none;">
   <h2>ROMs em destaque</h2>
+  <input type="text" id="searchBar" placeholder="Buscar ROM...">
+
   <div class="rom-card">
     <h3>LineageOS - Poco X7 Pro</h3>
     <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
-    <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A">Baixar</a>
+    <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
+
   <div class="rom-card">
     <h3>Evolution X</h3>
     <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
     <a href="https://evolution-x.org/" target="_blank">Baixar</a>
   </div>
-</section>
-</div>
+
   <div class="rom-card">
     <h3>PixelOS-Mi 8 lite (platina)</h3>
     <p>Baseada no Android 14. Tem o visual do Google Pixel. leve,rápido e fluído.</p>
     <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
-<div class="rom-card">
-    <h3>InfinityX-edge 30 neo (miami)</h3>
-    <p>Baseada no Android 15. tem Funções indispensáveis para o dia a dia,é muito fluída, bonita e personalizável.</p>
-    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
+  </div>
 
-<h3>Evolution X-Moto G7 plus (Lake)</h3>
-    <p>Baseada no Android 15.É confiável, simples muito fluída e bonita.</p>
+  <div class="rom-card">
+    <h3>InfinityX - Edge 30 Neo (miami)</h3>
+    <p>Baseada no Android 15. Tem funções indispensáveis para o dia a dia, é muito fluída, bonita e personalizável.</p>
+    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card">
+    <h3>Evolution X - Moto G7 Plus (Lake)</h3>
+    <p>Baseada no Android 15. É confiável, simples, muito fluída e bonita.</p>
     <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
-<h3>InfinityX-Redmi note 8 (Ginko)</h3>
-    <p>A primeira Rom com Android 16,Traz de novo melhorias no design e na fluidez, animações e interface melhoradas. e mais estabilidade para o sistema.</p>
+  </div>
+
+  <div class="rom-card">
+    <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
+    <p>A primeira ROM com Android 16. Traz melhorias no design, fluidez, animações e interface, além de mais estabilidade para o sistema.</p>
     <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
+  </div>
+</section>
 
 <section id="sobre">
   <h2>Sobre o site</h2>
   <p>Este site foi criado para facilitar o acesso a ROMs confiáveis, rápidas e seguras. Queremos ajudar usuários a aproveitarem melhor seus dispositivos Android.</p>
+</section>
+
 <section id="contato">
   <h2>Contato</h2>
-  <p>Envie dúvidas ou sugestões para: <a href="mailto:contato@customromshome.com.br">contatocustomromshome@gmail.com</a></p>
+  <p>Envie dúvidas ou sugestões para: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
 </section>
 
 <footer>
   <p>© 2025 CustomROMsHome - Todos os direitos reservados.</p>
 </footer>
+
 <script>
   const searchInput = document.getElementById('searchBar');
   searchInput.addEventListener('keyup', function () {
@@ -113,5 +135,6 @@
     });
   });
 </script>
+
 </body>
 </html>

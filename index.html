@@ -55,8 +55,8 @@
   <h2>Bem-vindo ao Custom ROMs Home!</h2>
   <p>Encontre as melhores ROMs personalizadas para seu dispositivo Android.</p>
 </section>
-
 <section id="roms">
+<input type="text" id="searchBar" placeholder="Buscar ROM..." style="width: 100%; padding: 10px; font-size: 16px; margin: 10px 0; border-radius: 5px; border: none;">
   <h2>ROMs em destaque</h2>
   <div class="rom-card">
     <h3>LineageOS - Poco X7 Pro</h3>
@@ -97,6 +97,21 @@
 <footer>
   <p>© 2025 CustomROMsHome - Todos os direitos reservados.</p>
 </footer>
+<script>
+  const searchInput = document.getElementById('searchBar');
+  searchInput.addEventListener('keyup', function () {
+    const filter = searchInput.value.toLowerCase();
+    const romCards = document.querySelectorAll('.rom-card');
 
+    romCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(filter)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>
 </body>
 </html>

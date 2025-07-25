@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Custom ROMs Home</title>
   <style>
     body {
@@ -18,6 +17,16 @@
       padding: 20px;
       text-align: center;
     }
+    header div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    header img {
+      height: 40px;
+    }
     nav a {
       color: #00ff99;
       margin: 0 15px;
@@ -26,11 +35,16 @@
     section {
       padding: 20px;
     }
-    footer {
-      background-color: #1f1f1f;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
+    .rom-card {
+      background-color: #222;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+    .rom-card:hover {
+      transform: scale(1.02);
     }
     input#searchBar {
       width: 100%;
@@ -45,41 +59,24 @@
       color: #000;
       border: none;
       padding: 8px 12px;
-      margin: 5px 5px 0 0;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .filter-buttons button:hover {
-      background-color: #00cc7a;
-      transform: scale(1.05);
-    }
-    .roms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .rom-card {
-      background-color: #222;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-    .rom-card:hover {
-      transform: scale(1.02);
-    }
-    .rom-card a {
-      color: #00ff99;
-      text-decoration: none;
+    footer {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Custom ROMs Home</h1>
+  <div>
+    <img src="logo.png" alt="Logo" />
+    <h1>customromshome.com</h1>
+  </div>
   <nav>
     <a href="#home">Início</a>
     <a href="#roms">ROMs</a>
@@ -98,6 +95,7 @@
   <input type="text" id="searchBar" placeholder="Buscar ROM...">
 
   <div class="filter-container" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+
     <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
       <strong style="width: 100%;">Filtrar por Android:</strong>
       <button onclick="filtrarVersao('todos')">Todos</button>
@@ -119,43 +117,57 @@
     </div>
   </div>
 
-  <div class="roms-grid">
-    <div class="rom-card android15 xiaomi">
-      <h3>LineageOS - Poco X7 Pro</h3>
-      <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
-      <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card android15">
-      <h3>Evolution X</h3>
-      <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
-      <a href="https://evolution-x.org/" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card android14 xiaomi">
-      <h3>PixelOS - Mi 8 Lite (Platina)</h3>
-      <p>Baseada no Android 14. Tem o visual do Google Pixel. Leve, rápida e fluída.</p>
-      <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card android15 motorola">
-      <h3>InfinityX - Edge 30 Neo (Miami)</h3>
-      <p>Baseada no Android 15. Tem funções indispensáveis para o dia a dia, é muito fluída, bonita e personalizável.</p>
-      <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card android15 motorola">
-      <h3>Evolution X - Moto G7 Plus (Lake)</h3>
-      <p>Baseada no Android 15. É confiável, simples, muito fluída e bonita.</p>
-      <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card android16 xiaomi">
-      <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
-      <p>A primeira ROM com Android 16. Traz melhorias no design, fluidez, animações e interface, além de mais estabilidade para o sistema.</p>
-      <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
-    </div>
-    <div class="rom-card samsung">
-      <h3>Pack Galaxy S10e (beyond0lte)</h3>
-      <p>Pack com diversas ROMs excelentes para seu Galaxy S10e.</p>
-      <a href="https://customrombay.org/samsung-beyond0lte/" target="_blank">Baixar</a>
-    </div>
+  <div class="rom-card android15">
+    <h3>LineageOS - Poco X7 Pro</h3>
+    <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
+    <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
+
+  <div class="rom-card">
+    <h3>Evolution X</h3>
+    <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
+    <a href="https://evolution-x.org/" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card android14 xiaomi">
+    <h3>PixelOS - Mi 8 Lite (platina)</h3>
+    <p>Baseada no Android 14. Visual do Google Pixel, leve, rápido e fluído.</p>
+    <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card android15 motorola">
+    <h3>InfinityX - Edge 30 Neo (miami)</h3>
+    <p>Baseada no Android 15. Fluída, bonita e personalizável.</p>
+    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card android15 motorola">
+    <h3>Evolution X - Moto G7 Plus (Lake)</h3>
+    <p>Baseada no Android 15. Simples, fluída e bonita.</p>
+    <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card android16 xiaomi">
+    <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
+    <p>Android 16. Mais design, fluidez, estabilidade e interface.</p>
+    <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
+  </div>
+
+  <div class="rom-card samsung">
+    <h3>Galaxy S10e (beyond0lte)</h3>
+    <p>Pack com diversas ROMs excelentes para seu Galaxy S10e.</p>
+    <a href="https://customrombay.org/samsung-beyond0lte/" target="_blank">Baixar</a>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2>Sobre o site</h2>
+  <p>Este site foi criado para facilitar o acesso a ROMs confiáveis, rápidas e seguras.</p>
+</section>
+
+<section id="contato">
+  <h2>Contato</h2>
+  <p>Envie dúvidas ou sugestões para: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
 </section>
 
 <section id="comentarios">
@@ -167,16 +179,6 @@
     crossorigin="anonymous"
     async>
   </script>
-</section>
-
-<section id="sobre">
-  <h2>Sobre o site</h2>
-  <p>Este site foi criado para facilitar o acesso a ROMs confiáveis, rápidas e seguras. Queremos ajudar usuários a aproveitarem melhor seus dispositivos Android.</p>
-</section>
-
-<section id="contato">
-  <h2>Contato</h2>
-  <p>Envie dúvidas ou sugestões para: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
 </section>
 
 <footer>
@@ -200,26 +202,18 @@
       if (classe === 'todos') {
         card.style.display = '';
       } else {
-        const isMatch = card.classList.contains(classe);
-        const isPack = !card.classList.contains('android10') &&
-                       !card.classList.contains('android11') &&
-                       !card.classList.contains('android12') &&
-                       !card.classList.contains('android13') &&
-                       !card.classList.contains('android14') &&
-                       !card.classList.contains('android15') &&
-                       !card.classList.contains('android16');
-        card.style.display = (isMatch || (classe === 'todos' && isPack)) ? '' : 'none';
+        card.style.display = card.classList.contains(classe) ? '' : 'none';
       }
     });
   }
 
-  function filtrarFabricante(fabricante) {
+  function filtrarFabricante(classe) {
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
-      if (fabricante === 'todos') {
+      if (classe === 'todos') {
         card.style.display = '';
       } else {
-        card.style.display = card.classList.contains(fabricante) ? '' : 'none';
+        card.style.display = card.classList.contains(classe) ? '' : 'none';
       }
     });
   }

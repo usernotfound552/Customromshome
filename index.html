@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom ROMs Home</title>
   <style>
     body {
@@ -17,10 +16,11 @@
       padding: 20px;
       text-align: center;
     }
-    header img {
+    header img.logo {
       width: 48px;
       height: 48px;
-      margin-bottom: 10px;
+      display: block;
+      margin: 0 auto 10px;
     }
     nav {
       text-align: center;
@@ -45,6 +45,11 @@
     .rom-card:hover {
       transform: scale(1.01);
     }
+    .rom-card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
     input#searchBar {
       width: 100%;
       padding: 10px;
@@ -55,18 +60,19 @@
     }
     .filters {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 10px;
       margin-bottom: 20px;
     }
     .filter-group {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;
       gap: 8px;
+      flex-wrap: wrap;
     }
-    .filters label {
+    .filter-group label {
+      margin-right: 8px;
       font-weight: bold;
-      width: 100%;
     }
     .filters button {
       background-color: #00ff99;
@@ -82,125 +88,127 @@
       padding: 10px;
       font-size: 14px;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li a {
-      color: #00ff99;
-    }
   </style>
 </head>
 <body>
-
 <header>
-  <img src="logo.png" alt="Logo">
+  <img src="logo.png" alt="Logo" class="logo">
   <h1>customromshome.com</h1>
 </header>
-
 <nav>
   <a href="#home">Início</a>
   <a href="#roms">ROMs</a>
+  <a href="#guia">Guia</a>
   <a href="#sobre">Sobre</a>
   <a href="#ferramentas">Ferramentas</a>
   <a href="#contato">Contato</a>
 </nav>
-
 <section id="home">
   <h2>Bem-vindo ao Custom ROMs Home!</h2>
   <p>Encontre as melhores ROMs personalizadas para seu dispositivo Android.</p>
 </section>
-
 <section id="roms">
   <h2>ROMs em destaque</h2>
-  <input type="text" id="searchBar" placeholder="Buscar ROM..."/>
-
+  <input type="text" id="searchBar" placeholder="Buscar ROM...">
   <div class="filters">
     <div class="filter-group">
-      <label>Filtrar por Android:</label>
+      <label>Versão Android:</label>
       <button onclick="filtrarVersao('todos')">Todos</button>
+      <button onclick="filtrarVersao('android10')">Android 10</button>
+      <button onclick="filtrarVersao('android11')">Android 11</button>
+      <button onclick="filtrarVersao('android12')">Android 12</button>
+      <button onclick="filtrarVersao('android13')">Android 13</button>
       <button onclick="filtrarVersao('android14')">Android 14</button>
       <button onclick="filtrarVersao('android15')">Android 15</button>
       <button onclick="filtrarVersao('android16')">Android 16</button>
+      <button onclick="filtrarVersao('anteriores')">Versões Anteriores</button>
     </div>
     <div class="filter-group">
-      <label>Filtrar por fabricante:</label>
+      <label>Fabricante:</label>
       <button onclick="filtrarFabricante('todos')">Todos</button>
       <button onclick="filtrarFabricante('xiaomi')">Xiaomi</button>
       <button onclick="filtrarFabricante('motorola')">Motorola</button>
       <button onclick="filtrarFabricante('samsung')">Samsung</button>
     </div>
   </div>
-
-  <!-- ROMs -->
   <div class="rom-card android15 xiaomi">
+    <img src="img/lineageos_poco.jpg" alt="LineageOS">
     <h3>LineageOS - Poco X7 Pro</h3>
     <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
     <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android14 xiaomi">
-    <h3>PixelOS - Mi 8 Lite (Platina)</h3>
-    <p>Baseada no Android 14. Tem o visual do Google Pixel. leve, rápido e fluído.</p>
-    <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
+  <div class="rom-card todos todosfabricantes">
+    <img src="img/evolutionx_generic.jpg" alt="Evolution X">
+    <h3>Evolution X</h3>
+    <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
+    <a href="https://evolution-x.org/" target="_blank">Baixar</a>
   </div>
-
   <div class="rom-card android15 motorola">
+    <img src="img/edge30neo_infinityx.jpg" alt="InfinityX Edge 30 Neo">
     <h3>InfinityX - Edge 30 Neo (Miami)</h3>
     <p>Baseada no Android 15. Muito fluída, bonita e personalizável.</p>
     <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android15 motorola">
-    <h3>Evolution X - Moto G7 Plus (Lake)</h3>
-    <p>Baseada no Android 15. Confiável, simples e bonita.</p>
-    <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
+<div class="rom-card android15 motorola">
+    <img src="img/mi8lote_pixelos.jpg" alt="PixelOS- Mi 8 lite">
+    <h3>PixelOS - Mi 8 lite (platina)</h3>
+    <p>Baseada no Android 14. Visual do Google Pixel, leve, rápido e fluído.</p>
+    <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android16 xiaomi">
-    <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
-    <p>Android 16. Melhorias em design, fluidez, animações e estabilidade.</p>
-    <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
-  </div>
-
-  <div class="rom-card todos samsung">
-    <h3>Pack de ROMs - Galaxy S10e (beyond0lte)</h3>
+  <div class="rom-card pack Samsung">
+    <img src="img/pack_galaxy.jpg" alt="pack">
+    <h3>pack de ROMs - S10e (Beyond0lte)</h3>
     <p>Pack com diversas ROMs excelentes para seu Galaxy S10e.</p>
-    <a href="https://customrombay.org/samsung-beyond0lte/" target="_blank">Baixar</a>
+    <a href="https://customrombay.org/samsung-beyond0lte/"_blank">Baixar</a>
+  </div>
+    <div class="rom-card android16 xiaomi">
+    <img src="img/packS10e.png" alt="capadarom">
+    <h3>InfinityX - Redmi Note 8 (Ginko)</h3>
+    <p>Android 16. Mais design, fluidez, estabilidade e interface.</p>
+    <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
   </div>
 </section>
 
+<section id="guia">
+  <h2>Guia de Instalação</h2>
+  <p>1. Desbloqueie o bootloader do seu dispositivo.<br>
+     2. Instale um recovery personalizado como o TWRP.<br>
+     3. Faça backup dos seus dados.<br>
+     4. Baixe e transfira a ROM para seu celular.<br>
+     5. Faça wipe (dalvik, cache, data, system).<br>
+     6. Instale a ROM pelo recovery.<br>
+     7. Instale GApps e Magisk (se necessário).<br>
+     8. Reinicie o sistema.</p>
+</section>
+
 <section id="ferramentas">
-  <h2>Ferramentas úteis</h2>
+  <h2>Ferramentas Úteis</h2>
   <ul>
-    <li><a href="https://github.com/topjohnwu/Magisk" target="_blank">Magisk</a> – Root para Android</li>
-    <li><a href="https://twrp.me/Devices" target="_blank">TWRP</a> – Recovery personalizado</li>
-    <li><a href="https://opengapps.org/" target="_blank">OpenGApps</a> – Pacotes Google (GApps)</li>
-    <li><a href="https://developer.android.com/studio/releases/platform-tools" target="_blank">ADB/Fastboot</a> – Ferramentas oficiais da Google</li>
-    <li><a href="https://play.google.com/store/apps/details?id=com.jrummy.apps.rom.installer" target="_blank">ROM Installer</a> – App útil para instalação</li>
-    <li><a href="https://github.com/tiann/KernelSU" target="_blank">KernelSU</a> – Root moderno sem Magisk</li>
+    <li><a href="https://twrp.me/" target="_blank">TWRP Recovery</a></li>
+    <li><a href="https://developer.android.com/tools/adb" target="_blank">ADB e Fastboot</a></li>
+    <li><a href="https://opengapps.org/" target="_blank">OpenGApps</a></li>
+    <li><a href="https://magisk.me/" target="_blank">Magisk</a></li>
   </ul>
+</section>
+
+<section id="sobre">
+  <h2>Sobre o site</h2>
+  <p>Este site foi criado com o objetivo de facilitar o acesso a ROMs confiáveis e atualizadas, dando aos usuários Android mais liberdade e performance.</p>
 </section>
 
 <section id="contato">
   <h2>Contato</h2>
-  <p>Dúvidas ou sugestões: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
+  <p>Envie dúvidas ou sugestões para: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
 </section>
 
 <section id="comentarios">
   <h2>Comentários</h2>
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = "customromshome";
-    };
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://customromshome.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
+  <script src="https://utteranc.es/client.js"
+          repo="usernotfound552/Customromshome"
+          issue-term="pathname"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async>
   </script>
 </section>
 
@@ -233,6 +241,11 @@
     });
   }
 </script>
-
+</body>
+</html>
+</section>
+</body>
+</html>
+</section>
 </body>
 </html>

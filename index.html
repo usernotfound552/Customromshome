@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom ROMs Home</title>
   <style>
     body {
@@ -17,15 +16,15 @@
       padding: 20px;
       text-align: center;
     }
-    header div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    header img.logo {
+      width: 48px;
+      height: 48px;
+      display: block;
+      margin: 0 auto 10px;
     }
-    header img {
-      height: 40px;
+    nav {
+      text-align: center;
+      padding: 10px 0;
     }
     nav a {
       color: #00ff99;
@@ -40,21 +39,42 @@
       padding: 15px;
       margin: 10px 0;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       transition: transform 0.2s ease;
     }
     .rom-card:hover {
-      transform: scale(1.02);
+      transform: scale(1.01);
+    }
+    .rom-card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
     input#searchBar {
       width: 100%;
       padding: 10px;
       font-size: 16px;
-      margin: 10px 0;
+      margin: 15px 0;
       border-radius: 5px;
       border: none;
     }
-    .filter-buttons button {
+    .filters {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-group label {
+      margin-right: 8px;
+      font-weight: bold;
+    }
+    .filters button {
       background-color: #00ff99;
       color: #000;
       border: none;
@@ -71,33 +91,28 @@
   </style>
 </head>
 <body>
-
 <header>
-  <div>
-    <img src="logo.png" alt="Logo" />
-    <h1>customromshome.com</h1>
-  </div>
-  <nav>
-    <a href="#home">Início</a>
-    <a href="#roms">ROMs</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#contato">Contato</a>
-  </nav>
+  <img src="logo.png" alt="Logo" class="logo">
+  <h1>customromshome.com</h1>
 </header>
-
+<nav>
+  <a href="#home">Início</a>
+  <a href="#roms">ROMs</a>
+  <a href="#guia">Guia</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#ferramentas">Ferramentas</a>
+  <a href="#contato">Contato</a>
+</nav>
 <section id="home">
   <h2>Bem-vindo ao Custom ROMs Home!</h2>
   <p>Encontre as melhores ROMs personalizadas para seu dispositivo Android.</p>
 </section>
-
 <section id="roms">
   <h2>ROMs em destaque</h2>
   <input type="text" id="searchBar" placeholder="Buscar ROM...">
-
-  <div class="filter-container" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
-
-    <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
-      <strong style="width: 100%;">Filtrar por Android:</strong>
+  <div class="filters">
+    <div class="filter-group">
+      <label>Versão Android:</label>
       <button onclick="filtrarVersao('todos')">Todos</button>
       <button onclick="filtrarVersao('android10')">Android 10</button>
       <button onclick="filtrarVersao('android11')">Android 11</button>
@@ -106,63 +121,79 @@
       <button onclick="filtrarVersao('android14')">Android 14</button>
       <button onclick="filtrarVersao('android15')">Android 15</button>
       <button onclick="filtrarVersao('android16')">Android 16</button>
+      <button onclick="filtrarVersao('anteriores')">Versões Anteriores</button>
     </div>
-
-    <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
-      <strong style="width: 100%;">Filtrar por fabricante:</strong>
+    <div class="filter-group">
+      <label>Fabricante:</label>
       <button onclick="filtrarFabricante('todos')">Todos</button>
       <button onclick="filtrarFabricante('xiaomi')">Xiaomi</button>
       <button onclick="filtrarFabricante('motorola')">Motorola</button>
       <button onclick="filtrarFabricante('samsung')">Samsung</button>
     </div>
   </div>
-
-  <div class="rom-card android15">
+  <div class="rom-card android15 xiaomi">
+    <img src="img/lineageos_poco.jpg" alt="LineageOS">
     <h3>LineageOS - Poco X7 Pro</h3>
     <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
     <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card">
+  <div class="rom-card todos todosfabricantes">
+    <img src="img/evolutionx_generic.jpg" alt="Evolution X">
     <h3>Evolution X</h3>
     <p>ROM clássica, confiável e atualizada com recursos essenciais.</p>
     <a href="https://evolution-x.org/" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android14 xiaomi">
-    <h3>PixelOS - Mi 8 Lite (platina)</h3>
+  <div class="rom-card android15 motorola">
+    <img src="img/edge30neo_infinityx.jpg" alt="InfinityX Edge 30 Neo">
+    <h3>InfinityX - Edge 30 Neo (Miami)</h3>
+    <p>Baseada no Android 15. Muito fluída, bonita e personalizável.</p>
+    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
+  </div>
+<div class="rom-card android15 motorola">
+    <img src="img/mi8lote_pixelos.jpg" alt="PixelOS- Mi 8 lite">
+    <h3>PixelOS - Mi 8 lite (platina)</h3>
     <p>Baseada no Android 14. Visual do Google Pixel, leve, rápido e fluído.</p>
     <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android15 motorola">
-    <h3>InfinityX - Edge 30 Neo (miami)</h3>
-    <p>Baseada no Android 15. Fluída, bonita e personalizável.</p>
-    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
+  <div class="rom-card pack Samsung">
+    <img src="img/packS10e.png" alt="pack">
+    <h3>pack de ROMs - S10e (Beyond0lte)</h3>
+    <p>Pack com diversas ROMs excelentes para seu Galaxy S10e.</p>
+    <a href="https://customrombay.org/samsung-beyond0lte/"_blank">Baixar</a>
   </div>
-
-  <div class="rom-card android15 motorola">
-    <h3>Evolution X - Moto G7 Plus (Lake)</h3>
-    <p>Baseada no Android 15. Simples, fluída e bonita.</p>
-    <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
-  </div>
-
-  <div class="rom-card android16 xiaomi">
-    <h3>InfinityX - Redmi Note 8 (Ginkgo)</h3>
+    <div class="rom-card android16 xiaomi">
+    <img src="img/infinityx note8.jpg" alt="capadarom">
+    <h3>InfinityX - Redmi Note 8 (Ginko)</h3>
     <p>Android 16. Mais design, fluidez, estabilidade e interface.</p>
     <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
   </div>
+</section>
 
-  <div class="rom-card samsung">
-    <h3>Galaxy S10e (beyond0lte)</h3>
-    <p>Pack com diversas ROMs excelentes para seu Galaxy S10e.</p>
-    <a href="https://customrombay.org/samsung-beyond0lte/" target="_blank">Baixar</a>
-  </div>
+<section id="guia">
+  <h2>Guia de Instalação</h2>
+  <p>1. Desbloqueie o bootloader do seu dispositivo.<br>
+     2. Instale um recovery personalizado como o TWRP.<br>
+     3. Faça backup dos seus dados.<br>
+     4. Baixe e transfira a ROM para seu celular.<br>
+     5. Faça wipe (dalvik, cache, data, system).<br>
+     6. Instale a ROM pelo recovery.<br>
+     7. Instale GApps e Magisk (se necessário).<br>
+     8. Reinicie o sistema.</p>
+</section>
+
+<section id="ferramentas">
+  <h2>Ferramentas Úteis</h2>
+  <ul>
+    <li><a href="https://twrp.me/" target="_blank">TWRP Recovery</a></li>
+    <li><a href="https://developer.android.com/tools/adb" target="_blank">ADB e Fastboot</a></li>
+    <li><a href="https://opengapps.org/" target="_blank">OpenGApps</a></li>
+    <li><a href="https://magisk.me/" target="_blank">Magisk</a></li>
+  </ul>
 </section>
 
 <section id="sobre">
   <h2>Sobre o site</h2>
-  <p>Este site foi criado para facilitar o acesso a ROMs confiáveis, rápidas e seguras.</p>
+  <p>Este site foi criado com o objetivo de facilitar o acesso a ROMs confiáveis e atualizadas, dando aos usuários Android mais liberdade e performance.</p>
 </section>
 
 <section id="contato">
@@ -173,11 +204,11 @@
 <section id="comentarios">
   <h2>Comentários</h2>
   <script src="https://utteranc.es/client.js"
-    repo="usernotfound552/Customromshome"
-    issue-term="pathname"
-    theme="github-dark"
-    crossorigin="anonymous"
-    async>
+          repo="usernotfound552/Customromshome"
+          issue-term="pathname"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async>
   </script>
 </section>
 
@@ -189,35 +220,32 @@
   const searchInput = document.getElementById('searchBar');
   searchInput.addEventListener('keyup', function () {
     const filter = searchInput.value.toLowerCase();
-    const romCards = document.querySelectorAll('.rom-card');
-    romCards.forEach(card => {
+    const cards = document.querySelectorAll('.rom-card');
+    cards.forEach(card => {
       const text = card.textContent.toLowerCase();
       card.style.display = text.includes(filter) ? '' : 'none';
     });
   });
 
-  function filtrarVersao(classe) {
+  function filtrarVersao(versao) {
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
-      if (classe === 'todos') {
-        card.style.display = '';
-      } else {
-        card.style.display = card.classList.contains(classe) ? '' : 'none';
-      }
+      card.style.display = (versao === 'todos' || card.classList.contains(versao)) ? '' : 'none';
     });
   }
 
-  function filtrarFabricante(classe) {
+  function filtrarFabricante(fab) {
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
-      if (classe === 'todos') {
-        card.style.display = '';
-      } else {
-        card.style.display = card.classList.contains(classe) ? '' : 'none';
-      }
+      card.style.display = (fab === 'todos' || card.classList.contains(fab)) ? '' : 'none';
     });
   }
 </script>
-
+</body>
+</html>
+</section>
+</body>
+</html>
+</section>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +40,12 @@
       margin: 10px 0;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 1;
+    }
+    .rom-card.hidden {
+      transform: scale(0.98);
+      opacity: 0;
     }
     .rom-card:hover {
       transform: scale(1.01);
@@ -93,63 +97,52 @@
 </head>
 <body>
 <header>
-  <img src="logo.png" alt="Logo" class="logo" />
+  <img src="logo.png" alt="Logo" class="logo">
   <h1>customromshome.com</h1>
 </header>
 <nav>
   <a href="#home">Início</a>
   <a href="#roms">ROMs</a>
   <a href="#guia">Guia</a>
+  <a href="#faq">FAQ</a>
+  <a href="#comparar">Comparar</a>
+  <a href="#contribuir">Contribuir</a>
   <a href="#sobre">Sobre</a>
   <a href="#ferramentas">Ferramentas</a>
+  <a href="#changelog">Changelog</a>
   <a href="#contato">Contato</a>
-  <section id="changelog">
-  <h2>Changelog</h2>
-  <ul>
-    <li><strong>v6.2</strong>: Imagens nas ROMs + tags adicionadas + separação por filtros + guia de instalação.</li>
-    <li><strong>v6.1</strong>: Adição do logo, nova ROM Galaxy S10e + separação de filtros horizontal.</li>
-    <li><strong>v6.0</strong>: Comentários, filtro por fabricante e Android, sombras e transições.</li>
-    <li><strong>v5.0</strong>: Nova organização de ROMs e sistema de busca.</li>
-    <li><strong>v4.0</strong>: Lançamento do layout base do site.</li>
-  </ul>
-</section>
 </nav>
 <section id="home">
   <h2>Bem-vindo ao Custom ROMs Home!</h2>
   <p>Encontre as melhores ROMs personalizadas para seu dispositivo Android.</p>
+  <input type="text" id="searchBar" placeholder="Buscar ROM...">
+</section>
+<section class="filters">
+  <div class="filter-group">
+    <label>Versão Android:</label>
+    <button onclick="filtrarVersao('todos')">Todos</button>
+    <button onclick="filtrarVersao('android10')">Android 10</button>
+    <button onclick="filtrarVersao('android11')">Android 11</button>
+    <button onclick="filtrarVersao('android12')">Android 12</button>
+    <button onclick="filtrarVersao('android13')">Android 13</button>
+    <button onclick="filtrarVersao('android14')">Android 14</button>
+    <button onclick="filtrarVersao('android15')">Android 15</button>
+    <button onclick="filtrarVersao('android16')">Android 16</button>
+  </div>
+  <div class="filter-group">
+    <label>Fabricante:</label>
+    <button onclick="filtrarFabricante('todos')">Todos</button>
+    <button onclick="filtrarFabricante('xiaomi')">Xiaomi</button>
+    <button onclick="filtrarFabricante('motorola')">Motorola</button>
+    <button onclick="filtrarFabricante('samsung')">Samsung</button>
+  </div>
 </section>
 <section id="roms">
-  <h2>ROMs em destaque</h2>
-  <input type="text" id="searchBar" placeholder="Buscar ROM..." />
-  <div class="filters">
-    <div class="filter-group">
-      <label>Versão Android:</label>
-      <button onclick="filtrarVersao('todos')">Todos</button>
-      <button onclick="filtrarVersao('android10')">Android 10</button>
-      <button onclick="filtrarVersao('android11')">Android 11</button>
-      <button onclick="filtrarVersao('android12')">Android 12</button>
-      <button onclick="filtrarVersao('android13')">Android 13</button>
-      <button onclick="filtrarVersao('android14')">Android 14</button>
-      <button onclick="filtrarVersao('android15')">Android 15</button>
-      <button onclick="filtrarVersao('android16')">Android 16</button>
-      <button onclick="filtrarVersao('anteriores')">Versões Anteriores</button>
-    </div>
-    <div class="filter-group">
-      <label>Fabricante:</label>
-      <button onclick="filtrarFabricante('todos')">Todos</button>
-      <button onclick="filtrarFabricante('xiaomi')">Xiaomi</button>
-      <button onclick="filtrarFabricante('motorola')">Motorola</button>
-      <button onclick="filtrarFabricante('samsung')">Samsung</button>
-    </div>
-  </div>
   <div class="rom-card android15 xiaomi">
     <img src="img/x7prolineage.png" alt="LineageOS" />
     <h3>LineageOS - Poco X7 Pro</h3>
     <p>Baseada no Android 15. Leve, rápida e com visual puro do Google.</p>
-    <a href="https://drive.google.com/drive/folders/1rAqgh__mqHDDLWilTLnYstUWoYvlZA" target="_blank" style="display: inline-flex; align-items: center; gap: 6px;">
-  <img src="img/xiaomi.png" alt="Xiaomi" style="width: 20px; height: 20px;">
-  Baixar
-</a>
+    <a href="https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A" target="_blank">Baixar</a>
   </div>
   <div class="rom-card todos todosfabricantes">
     <img src="img/evox.png" alt="Evolution X" />
@@ -161,19 +154,13 @@
     <img src="img/infinitymiami.png" alt="InfinityX Edge 30 Neo" />
     <h3>InfinityX - Edge 30 Neo (Miami)</h3>
     <p>Baseada no Android 15. Muito fluída, bonita e personalizável.</p>
-    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank" style="display: inline-flex; align-items: center; gap: 6px;">
-  <img src="img/Motorola.png" alt="Motorola" style="width: 20px; height: 20px;">
-  Baixar
-</a>
+    <a href="https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326" target="_blank">Baixar</a>
   </div>
   <div class="rom-card android14 xiaomi">
     <img src="img/PixelMi8lite.png" alt="PixelOS- Mi 8 lite" />
     <h3>PixelOS - Mi 8 lite (platina)</h3>
     <p>Baseada no Android 14. Visual do Google Pixel, leve, rápido e fluído.</p>
-    <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank" style="display: inline-flex; align-items: center; gap: 6px;">
-  <img src="img/xiaomi.png" alt="Xiaomi" style="width: 20px; height: 20px;">
-  Baixar
-</a>
+    <a href="https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6" target="_blank">Baixar</a>
   </div>
   <div class="rom-card pack samsung">
     <img src="img/packS10e.png" alt="pack" />
@@ -185,23 +172,27 @@
     <img src="img/Note8A16.png" alt="InfinityX" />
     <h3>InfinityX - Redmi Note 8 (Ginko)</h3>
     <p>Android 16. Mais design, fluidez, estabilidade e interface.</p>
-    <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank" style="display: inline-flex; align-items: center; gap: 6px;">
-  <img src="img/xiaomi.png" alt="Xiaomi" style="width: 20px; height: 20px;">
-  Baixar
-</a>
+    <a href="https://projectinfinity-x.com/downloads/?device=ginkgo" target="_blank">Baixar</a>
   </div>
-  
-<div class="rom-card rom-card android15 xiaomi">
+<div class="rom-card rom-card android15 motorola">
     <img src="img/G7evox.png" alt="EvolutionX" />
     <h3>Evolution X - Moto G7 Plus</h3>
+    <h3>Evolution X - Moto G7 Plus (lake) </h3>
     <p>Baseada no Android 15. Simples, fluída e bonita.</p>
-    <a href="https://evolution-x.org/devices/lake" target="_blank" style="display: inline-flex; align-items: center; gap: 6px;">
-  <img src="img/Motorola.png" alt="Motorola" style="width: 20px; height: 20px;">
-  Baixar
+    <a href="https://evolution-x.org/devices/lake" target="_blank">Baixar</a>
   </div>
-  </section>
+    <div class="rom-card android15 xiaomi">
+    <img src="img/violetnote7pro.png" alt="SuperiorOS" />
+    <h3>SuperiorOS - Redmi Note 7 pro (Violet)</h3>
+    <p>Superior OS Android 15 é uma custom ROM leve, fluida e altamente personalizável, baseada no AOSP. Com o Android 15, ela traz recursos atualizados de privacidade, visual moderno, otimizações para desempenho e bateria, além de opções extras que melhoram a experiência sem comprometer a estabilidade.</p>
+    <a href="https://sourceforge.net/projects/superioros/files/violet/SuperiorOS-Fifteen-ROGUE-violet-20250626-0104-signed-fullota.zip/download?use_mirror=sinalbr" target="_blank">Baixar</a>
+  </div>
+</section>
+    </a>
+  </div>
+</section>
 <section id="guia">
-  <h2>Guia de Instalação</h2>
+    <h2>Guia de Instalação</h2>
   <p>
     1. Desbloqueie o bootloader do seu dispositivo.<br />
     2. Instale um recovery personalizado como o TWRP.<br />
@@ -211,51 +202,64 @@
     6. Instale a ROM pelo recovery.<br />
     7. Instale GApps e Magisk (se necessário).<br />
     8. Reinicie o sistema.
-  </p>
 </section>
-
+<section id="comparar">
+  <h2>Comparar ROMs</h2>
+  <p>Em breve: escolha duas ROMs e veja as diferenças de recursos, visual e desempenho.</p>
+</section>
+<section id="faq">
+  <h2>Perguntas Frequentes (FAQ)</h2>
+  <ul>
+    <li><strong>É seguro instalar uma ROM personalizada?</strong> Sim, desde que siga as instruções corretamente.</li>
+    <li><strong>Perco a garantia?</strong> Em muitos casos sim, ao desbloquear o bootloader.</li>
+    <li><strong>Como voltar para a ROM original?</strong> Usando o firmware oficial e ferramentas da fabricante.</li>
+    <li><strong>Posso usar apps de banco?</strong> Sim, com root escondido via Magisk ou SafetyNet funcionando.</li>
+  </ul>
+</section>
+<section id="contribuir">
+  <h2>Como Contribuir</h2>
+  <p>Você pode sugerir ROMs, reportar erros ou enviar melhorias via nosso <a href="https://github.com/usernotfound552/Customromshome" target="_blank">repositório GitHub</a>.</p>
+</section>
 <section id="ferramentas">
   <h2>Ferramentas Úteis</h2>
   <ul>
-    <li><a href="https://twrp.me/" target="_blank">TWRP Recovery</a></li>
-    <li><a href="https://developer.android.com/tools/adb" target="_blank">ADB e Fastboot</a></li>
-    <li><a href="https://opengapps.org/" target="_blank">OpenGApps</a></li>
-    <li><a href="https://magisk.me/" target="_blank">Magisk</a></li>
+    <li><a href="https://twrp.me">TWRP</a></li>
+    <li><a href="https://developer.android.com/studio/command-line/adb">ADB</a></li>
+    <li><a href="https://developer.android.com/studio/command-line/fastboot">Fastboot</a></li>
+    <li><a href="https://opengapps.org">GApps</a></li>
   </ul>
 </section>
-
-<section id="sobre">
-  <h2>Sobre o site</h2>
-  <p>
-    Este site foi criado com o objetivo de facilitar o acesso a ROMs confiáveis e atualizadas,
-    dando aos usuários Android mais liberdade e performance.
-  </p>
+<section id="changelog">
+  <h2>Changelog - v6.4</h2>
+  <ul>
+    <li>✅ Adicionado novo sistema de filtro horizontal por versão e fabricante</li>
+    <li>✅ Cartões com imagem.</li>
+    <li>✅ Comentários ativados com Utterances</li>
+    <li>✅ Guia de instalação adicionado</li>
+    <li>✅ Melhorias visuais com transições suaves e sombras</li>
+  </ul>
 </section>
-
-<section id="contato">
-  <h2>Contato</h2>
-  <p>
-    Envie dúvidas ou sugestões para:
-    <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a>
-  </p>
-</section>
-
 <section id="comentarios">
   <h2>Comentários</h2>
-  <script
-    src="https://utteranc.es/client.js"
-    repo="usernotfound552/Customromshome"
-    issue-term="pathname"
-    theme="github-dark"
-    crossorigin="anonymous"
-    async
-  ></script>
+  <script src="https://utteranc.es/client.js"
+          repo="usernotfound552/Customromshome"
+          issue-term="pathname"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async>
+  </script>
 </section>
-
+<section id="sobre">
+  <h2>Sobre o site</h2>
+  <p>Este site foi criado para facilitar o acesso a ROMs confiáveis e atualizadas, dando aos usuários Android mais liberdade e performance.</p>
+</section>
+<section id="contato">
+  <h2>Contato</h2>
+  <p>Envie dúvidas ou sugestões para: <a href="mailto:contatocustomromshome@gmail.com">contatocustomromshome@gmail.com</a></p>
+</section>
 <footer>
   <p>© 2025 CustomROMsHome - Todos os direitos reservados.</p>
 </footer>
-
 <script>
   const searchInput = document.getElementById('searchBar');
   searchInput.addEventListener('keyup', function () {
@@ -263,25 +267,19 @@
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
       const text = card.textContent.toLowerCase();
-      card.style.display = text.includes(filter) ? '' : 'none';
+      card.classList.toggle('hidden', !text.includes(filter));
     });
   });
-
   function filtrarVersao(versao) {
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
-      card.style.display = versao === 'todos' || card.classList.contains(versao)
-        ? ''
-        : 'none';
+      card.style.display = (versao === 'todos' || card.classList.contains(versao)) ? '' : 'none';
     });
   }
-
   function filtrarFabricante(fab) {
     const cards = document.querySelectorAll('.rom-card');
     cards.forEach(card => {
-      card.style.display = fab === 'todos' || card.classList.contains(fab)
-        ? ''
-        : 'none';
+      card.style.display = (fab === 'todos' || card.classList.contains(fab)) ? '' : 'none';
     });
   }
 </script>

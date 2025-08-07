@@ -203,8 +203,33 @@
     8. Reinicie o sistema.
 </section>
 <section id="comparar">
+	<section id="comparar">
   <h2>Comparar ROMs</h2>
-  <p>Em breve: escolha duas ROMs e veja as diferenças de recursos, visual e desempenho.</p>
+  <p>Escolha duas ROMs para comparar:</p>
+  <select id="romA">
+    <option value="">-- Selecione a primeira ROM --</option>
+    <option value="lineage">LineageOS - Poco X7 Pro</option>
+    <option value="evox">Evolution X</option>
+    <option value="infinity_miami">InfinityX - Edge 30 Neo</option>
+    <option value="pixelos">PixelOS - Mi 8 Lite</option>
+    <option value="infinity_ginkgo">InfinityX - Redmi Note 8</option>
+    <option value="superior">Superior OS - Redmi Note 7 Pro</option>
+  </select>
+
+  <select id="romB">
+    <option value="">-- Selecione a segunda ROM --</option>
+    <option value="lineage">LineageOS - Poco X7 Pro</option>
+    <option value="evox">Evolution X</option>
+    <option value="infinity_miami">InfinityX - Edge 30 Neo</option>
+    <option value="pixelos">PixelOS - Mi 8 Lite</option>
+    <option value="infinity_ginkgo">InfinityX - Redmi Note 8</option>
+    <option value="superior">Superior OS - Redmi Note 7 Pro</option>
+  </select>
+
+  <button onclick="compararROMs()">Comparar</button>
+
+  <div id="resultado-comparacao" style="margin-top:20px;"></div>
+</section>
 </section>
 <section id="faq">
   <h2>Perguntas Frequentes (FAQ)</h2>
@@ -283,4 +308,80 @@
   }
 </script>
 </body>
+<script>
+  const romData = {
+    lineage: {
+      nome: "LineageOS - Poco X7 Pro",
+      android: "15",
+      fabricante: "Xiaomi",
+      fluidez: "Alta",
+      personalizacao: "Baixa",
+      link: "https://drive.google.com/drive/folders/1-rAqgh__mqHDDLWilTLnYstUWoYvlZ_A"
+    },
+    evox: {
+      nome: "Evolution X",
+      android: "15",
+      fabricante: "Todos",
+      fluidez: "Alta",
+      personalizacao: "Alta",
+      link: "https://evolution-x.org/"
+    },
+    infinity_miami: {
+      nome: "InfinityX - Edge 30 Neo",
+      android: "15",
+      fabricante: "Motorola",
+      fluidez: "Muito Alta",
+      personalizacao: "Alta",
+      link: "https://github.com/Motorola-Miami/miami_releases/releases/tag/%2326"
+    },
+    pixelos: {
+      nome: "PixelOS - Mi 8 Lite",
+      android: "14",
+      fabricante: "Xiaomi",
+      fluidez: "Alta",
+      personalizacao: "Média",
+      link: "https://drive.google.com/drive/folders/1IJWz3J9Yhx8QXmEuu9Qk-wx-YSoMQMu6"
+    },
+    infinity_ginkgo: {
+      nome: "InfinityX - Redmi Note 8",
+      android: "16",
+      fabricante: "Xiaomi",
+      fluidez: "Muito Alta",
+      personalizacao: "Alta",
+      link: "https://projectinfinity-x.com/downloads/?device=ginkgo"
+    },
+    superior: {
+      nome: "Superior OS - Redmi Note 7 Pro",
+      android: "15",
+      fabricante: "Xiaomi",
+      fluidez: "Alta",
+      personalizacao: "Alta",
+      link: "https://sourceforge.net/projects/superioros/files/violet/SuperiorOS-Fifteen-ROGUE-violet-20250626-0104-signed-fullota.zip/download?use_mirror"
+    }
+  };
+
+  function compararROMs() {
+    const a = document.getElementById("romA").value;
+    const b = document.getElementById("romB").value;
+    const resultado = document.getElementById("resultado-comparacao");
+
+    if (!a || !b || a === b) {
+      resultado.innerHTML = "<p>Escolha duas ROMs diferentes.</p>";
+      return;
+    }
+
+    const rom1 = romData[a];
+    const rom2 = romData[b];
+
+    resultado.innerHTML = `
+      <table border="1" cellpadding="8" style="width:100%; background:#1f1f1f; border-color:#00ff99;">
+        <tr><th>Características</th><th>${rom1.nome}</th><th>${rom2.nome}</th></tr>
+        <tr><td>Android</td><td>${rom1.android}</td><td>${rom2.android}</td></tr>
+        <tr><td>Fabricante</td><td>${rom1.fabricante}</td><td>${rom2.fabricante}</td></tr>
+        <tr><td>Fluidez</td><td>${rom1.fluidez}</td><td>${rom2.fluidez}</td></tr>
+        <tr><td>Personalização</td><td>${rom1.personalizacao}</td><td>${rom2.personalizacao}</td></tr>
+        <tr><td>Link</td><td><a href="${rom1.link}" target="_blank">Baixar</a></td><td><a href="${rom2.link}" target="_blank">Baixar</a></td></tr>
+      </table>
+    `;
+  }
 </html>
